@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Shop</title>
+    <link rel="stylesheet" href="/shopping-cart.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <nav class="nav-main">
+                <ul class="top-header">
+                    <li class="element-top-header"><a href="home.html"></a> HOME</li>
+                    <li class="element-top-header"><a href="store.html"></a> STORE</li>
+                    <li class="element-top-header"><a href="aboutme.html"></a> ABOUT ME</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="middle-section">
+            <div class="Title">CÁC DÒNG XE MERCEDES-BENZ</div>
+            <div class="row">
+                
+            </div>
+        </div>
+        <div class="purchase-section">
+            <h1 class="section-header">PURCHASE</h1>
+            <div class="cart-row-title">
+                <span class="font-title cart-item">ITEM</span>
+                <span class="font-title cart-price">PRICE</span>
+                <span class="font-title cart-quantity">QUANTITY</span>
+            </div>
+           <div class="cart-items">
+                <div class="cart-row">
+                    <div class="cart-row-item">
+                        <img class="cart-row-img" src="/image/c300.jpg" alt="">
+                        <span class="cart-row-name">C300</span>
+                    </div>
+                    <div class="cart-row-price">
+                        <span class="cart-row-price-tag">2089000000 vnd</span>
+                    </div>
+                    <div class="cart-row-quantity">
+                        <input class="inp" type="number" name="" id="inp" value="3">
+                        <button class="btn btn-danger">REMOVE</button>
+                    </div>
+                </div>
+                <div class="cart-row">
+                    <div class="cart-row-item">
+                        <img class="cart-row-img" src="/image/c300.jpg" alt="">
+                        <span class="cart-row-name">C200</span>
+                    </div>
+                    <div class="cart-row-price">
+                        <span class="cart-row-price-tag">3189000000 vnd</span>
+                    </div>
+                    <div class="cart-row-quantity">
+                        <input class="inp" type="number" name="" id="inp" value="2">
+                        <button class="btn btn-danger">REMOVE</button>
+                    </div>
+                </div> 
+           </div>
+           <div class="cart-total">
+            <span class="total-text">TOTAL:</span>
+            <span class="total-price">3189000000 vnd</span>
+           </div>
+        </div>
+    </div>
+    <script src="/shopping-cart.js"></script>
+</body>
+</html>
