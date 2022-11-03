@@ -10,7 +10,7 @@
 .header-section{
     width: 100vw;
     height: 500px;
-    background-image: url(/image/Coolwallpaper.jpg);
+    background-image: url(image/Coolwallpaper.jpg);
     background-size: cover;
 }   
 .nav-main {
