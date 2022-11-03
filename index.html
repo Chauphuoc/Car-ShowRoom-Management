@@ -5,26 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motor Shop</title>
-    <link rel="stylesheet" href="/shopping-cart.css">
+    <link rel="stylesheet" href="shopping-cart.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body>
+<body >
 
-    <div class="container">
+    <div class="container" >
         <div class="header-section">
             <nav class="nav-main">
                 <ul class="top-header">
-                    <li class="element-top-header"><a href="home.html"></a> HOME</li>
-                    <li class="element-top-header"><a href="store.html"></a> STORE</li>
-                    <li class="element-top-header"><a href="aboutme.html"></a> ABOUT ME</li>
+                    <li class="element-top-header"><img onclick="openModel()" style="width:40px" src="/image/Mercedes_Benz__logo--desktop.png" alt=""> </li>
+                    <li  class="element-top-header"><a style="color:black;text-decoration:none" target="_blank" href="https://www.mbusa.com/en/home">HOME</a> </li>
+                    <li class="element-top-header"><a style="color:black;text-decoration:none" target="_blank" href="https://www.mbusa.com/en/all-vehicles">STORE</a> </li>
+                    <li class="element-top-header"><a style="color:black;text-decoration:none" target="_blank" href="https://www.mbusa.com/en/about-us">ABOUT ME</a></li>
                 </ul>
+               
             </nav>
         </div>
         <div class="middle-section">
-            <div class="Title">CÁC DÒNG XE MERCEDES-BENZ</div>
+            <div class="Title">LIST PRODUCTS OF MERCEDES-BENZ</div>
             <div class="row">
                 
             </div>
@@ -37,39 +39,53 @@
                 <span class="font-title cart-quantity">QUANTITY</span>
             </div>
            <div class="cart-items">
-                <div class="cart-row">
-                    <div class="cart-row-item">
-                        <img class="cart-row-img" src="/image/c300.jpg" alt="">
-                        <span class="cart-row-name">C300</span>
-                    </div>
-                    <div class="cart-row-price">
-                        <span class="cart-row-price-tag">2089000000 vnd</span>
-                    </div>
-                    <div class="cart-row-quantity">
-                        <input class="inp" type="number" name="" id="inp" value="3">
-                        <button class="btn btn-danger">REMOVE</button>
-                    </div>
-                </div>
-                <div class="cart-row">
-                    <div class="cart-row-item">
-                        <img class="cart-row-img" src="/image/c300.jpg" alt="">
-                        <span class="cart-row-name">C200</span>
-                    </div>
-                    <div class="cart-row-price">
-                        <span class="cart-row-price-tag">3189000000 vnd</span>
-                    </div>
-                    <div class="cart-row-quantity">
-                        <input class="inp" type="number" name="" id="inp" value="2">
-                        <button class="btn btn-danger">REMOVE</button>
-                    </div>
-                </div> 
+                
            </div>
            <div class="cart-total">
             <span class="total-text">TOTAL:</span>
-            <span class="total-price">3189000000 vnd</span>
+            <span id="total" class="total-price">0 VND</span>
            </div>
         </div>
+        <div class="bottom-section">
+            <div class="bottom-section1">
+                <div class="bottom-section-row">
+                    <img src="image/dang-ky-lai-thu-mercedes-2.jpg" alt="">
+                    <span class="comment">TRY DRIVING PROGRAMMING</span>
+                </div>
+                <div class="bottom-section-row">
+                    <img src="image/dang-ky-lai-thu-mercedes.jpg" alt="">
+                    <span class="comment" >PROMOTION PROGRAMMING</span>
+                </div>
+                <div class="bottom-section-row">
+                    <img src="image/lien-he-mercedes-da-nang.jpg" alt="">
+                    <span class="comment">SERVICE</span>
+                </div>
+            </div>
+            <div class="bottom-section2">
+                <span class="comment2">Phone Number: 0965148011</span>
+                <span class="comment2"><a href="https://www.facebook.com/">Facebook</a> </span>
+                <span class="comment2"><a href="https://www.youtube.com/watch?v=wMu370Nzf58">Youtube</a></span>
+            </div>
+        </div>
     </div>
-    <script src="/shopping-cart.js"></script>
+
+    <div class="model-container">
+        <div class="model">
+            <div class="model-header">
+                <div class="model-header1">
+                    <div class="model-title">NHẬN BÁO GIÁ</div>
+                    <div class="close-model" onclick="closeModel()">&times;</div>
+                </div>
+                <div class="auto">PhuocChau Auto-0965148011</div>
+            </div>
+            <div class="model-body">
+                <input class="input" type="text" name="" id="" placeholder=" Họ và tên:...">
+                <input class="input" type="text" name="" id="" placeholder=" Số điện thoại:...">
+                <input class="input" type="text" name="" id="" placeholder=" Dòng xe quan tâm">
+                <button class="sign-btn" >ĐĂNG KÝ</button>
+            </div>
+        </div>
+    </div>
+    <script src="shopping-cart.js"></script>
 </body>
 </html>

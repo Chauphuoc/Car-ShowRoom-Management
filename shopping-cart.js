@@ -1,61 +1,134 @@
 class Product {
-    constructor(name,avatar,price){
+    constructor(id,name,avatar,price){
+        this.id = id;
         this.name = name;
         this.avatar = avatar;
         this.price = price;
+        this.amount =1;
+    }
+    sumCash (){
+        return this.price * this.amount
+    }
+    setAmount (amount) {
+        this.amount = amount
     }
 }
 const products = [
-    new Product("C 200 Avantgarde","/image/c200-avantgarde-plus.png","Price: 1.669.000.000 vnd"),
-    new Product("C 200 Avantgarde Plus","/image/c200-avantgarde-plus.png","Price: 1.789.000.000 vnd"),
-    new Product("C 200 Avantgarde","/image/c300.jpg","Price: 2.089.000.000 vnd"),
-    new Product("C 200 Avantgarde","/image/E-180-2022.jpg","Price: 2.099.000.000 vnd"),
-    new Product("C 200 Avantgarde","/image/e200-2022.png","Price: 2.470.000.000 vnd"),
-    new Product("C 200 Avantgarde","/image/E300_AMG-2022.png","Price: 3.129.000.000 vnd"),
-    new Product("C 200 Avantgarde","/image/GLC_200_2022.png","Price: 1.859.000.000 vnd"),
-    new Product("C 200 Avantgarde","/image/GLC-200-4M.jpg","Price: 2.129.000.000 vnd"),
+    new Product(1,"C 200 Avantgarde","image/c200-avantgarde-plus.png",1669000000),
+    new Product(2,"C 200 Avantgarde Plus","image/c200-avantgarde-plus.png",1789000000),
+    new Product(3,"C 300 AMG","image/c300.jpg",2089000000),
+    new Product(4,"E180 2022","image/E-180-2022.jpg",2099000000),
+    new Product(5,"E200 2022","image/e200-2022.png",2470000000),
+    new Product(6,"E300 2022","image/E300_AMG-2022.png",3129000000),
+    new Product(7,"GLC 200 2022","image/GLC_200_2022.png",1859000000),
+    new Product(8,"GLC 200 4MATIC","image/GLC-200-4M.jpg",2669000000),
 ]
+
 function renderProduct () {
     let htmls = products.map(function(product){
         return `
         <div class="cell-big">
-                    <div class="cell-small">
-                        <div>
-                            <img class="product-logo" src="${product.avatar}" alt="">
-                        </div>
-                        <div class="product-name">${product.name}</div>
-                        <div class="produc-price">${product.price}</div>
-                        <div class="add-cart">
-                            <div class="btn btn-add">ADD TO CART</div>
-                        </div>
-                    </div>
+        <div class="cell-small">
+        <div>
+        <img class="product-logo" src="${product.avatar}" alt="">
+        </div>
+        <div class="product-name">
+        <span class="identify">${product.id}</span>${product.name}</div>
+        <div class="produc-price">${currencyFormat(product.price)}</div>
+        <div class="add-cart">
+        <div class="btn btn-add" onclick="addProduct(${product.id})">ADD TO CART</div>
+        </div>
+        </div>
         </div>`
     })
     document.querySelector(`.row`).innerHTML = htmls.join("")
 }
 renderProduct();
 
-const removeCartItemButton = document.getElementsByClassName("btn-danger")
-console.log(removeCartItemButton);
-for (let i=0; i<removeCartItemButton.length;i++) {
-    let button = removeCartItemButton[i];
-    button.addEventListener("click",function(event){
-        var buttonClicked = event.target;
-        buttonClicked.parentElement.parentElement.remove()
-        updateCartTotal ()
-    })
-}
-function updateCartTotal () {
-    var cartItemContainer = document.getElementsByClassName("cart-items")[0];
-    var cartRows = cartItemContainer.getElementsByClassName(`cart-row`);
-    for (let i=0; i<cartRows.length; i++){
-        var cartRow = cartRows[i];
-        var cartRowPrice = cartRow.getElementsByClassName("cart-row-price")[0].getElementsByClassName("cart-row-price-tag")[0];
-        var cartRowQuantity = cartRow.getElementsByClassName("cart-row-quantity")[0].getElementsByClassName("inp")[0];
-        console.log(cartRowPrice,cartRowQuantity);
-        var Price = parseFloat(cartRowPrice.innerText);
-        var Quantity = cartRowQuantity.value;
-
-        console.log(Price*Quantity);
+class ProductCart {
+    constructor(id,name,avatar,price) {
+        this.name = name;
+        this.avatar = avatar;
+        this.price = price;
+        this.id = id;
     }
+}
+
+const productcarts = [
+    // new ProductCart(1,"C 200 Avantgarde","/image/c200-avantgarde-plus.png","Price: 1.669.000.000 vnd"),
+    // new ProductCart(2,"C 200 Avantgarde Plus","/image/c200-avantgarde-plus.png","Price: 1.789.000.000 vnd"),
+];
+
+function addProduct(productId) {
+  for (i=0;i<products.length;i++){
+    if (productId === products[i].id){
+        
+        productcarts.push(products[i]);
+    }
+  }
+  renderPurchase ();
+  Calculating ();
+}
+function renderPurchase () {
+    let htmls2=productcarts.map(function(productcart,index){
+        return `
+        <div class="cart-row">
+            <div class="cart-row-item">
+                <img class="cart-row-img" src="${productcart.avatar}" alt="">
+                <span class="cart-row-name">${productcart.name}</span>
+            </div>
+            <div class="cart-row-price">
+                <span class="cart-row-price-tag">${currencyFormat(productcart.sumCash())}</span>
+            </div>
+            <div class="cart-row-quantity">
+                <input class="inp" type="number" name="" id="inp" value="${productcart.amount}" oninput="quantity(this,${productcart.id})">
+                <button class="btn btn-danger" onclick="removeProduct(${index})">REMOVE</button>
+            </div>
+        </div>
+        `
+    })
+    document.querySelector(`.cart-items`).innerHTML = htmls2.join("")
+    
+}
+function removeProduct (index) {
+    let confirm = window.confirm("Do you wanna remove this product from your cart?");
+    if (confirm) {
+        
+        productcarts.splice(index,1);
+        renderPurchase ();
+        Calculating ()
+
+    }
+}
+
+function quantity(input,idCart) {
+    for (let product of productcarts){
+        if (product.id == idCart) {
+            product.setAmount(Number(input.value))
+        }
+    }
+    renderPurchase()
+    Calculating ()
+}
+
+
+
+function Calculating () {
+    var total = 0;
+    for(let item of productcarts){
+        total += item.sumCash();
+    }
+   
+    document.querySelector(".total-price").innerText = currencyFormat(total);
+}
+
+function currencyFormat(number){
+    return number.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+}
+
+function openModel() {
+    document.querySelector(".model-container").classList.toggle("show");
+}
+function closeModel () {
+    document.querySelector(".model-container").classList.toggle("show");
 }
