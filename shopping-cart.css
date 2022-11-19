@@ -57,7 +57,7 @@
     margin:20px 40px;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+   
 }
 .product-logo {
     width: 270px;
@@ -315,4 +315,25 @@
     cursor: pointer;
     transform: scale(1.2);
     font-weight: bolder;
+}
+.content-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+   
+}
+.active {
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+.number-page {
+    display: flex;
+    flex-direction: row;
+}
+.btn-paging-left {
+    cursor: pointer;
+}
+.btn-paging-right {
+    cursor: pointer;
 }
